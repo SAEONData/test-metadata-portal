@@ -1,7 +1,7 @@
-from .models import db, OAuth, User
+from .models import db, User, HydraToken
 from hydra_client import HydraClientBlueprint
 
-bp = HydraClientBlueprint('hydra', __name__, db, User, OAuth)
+bp = HydraClientBlueprint('hydra', __name__, db, User, HydraToken)
 
 
 def init_app(app):

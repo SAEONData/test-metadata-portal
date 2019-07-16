@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
-from flask_dance.consumer.storage.sqla import OAuthConsumerMixin
+
+from hydra_client import HydraTokenMixin
 
 db = SQLAlchemy()
 
@@ -14,6 +15,5 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String, unique=True, nullable=False)
 
 
-class OAuth(OAuthConsumerMixin, db.Model):
-    user_id = db.Column(db.String, db.ForeignKey(User.id), nullable=False)
-    user = db.relationship(User)
+class HydraToken(HydraTokenMixin, db.Model):
+    pass
