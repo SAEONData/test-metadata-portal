@@ -12,7 +12,7 @@ def init_app(app):
 
 class User(UserMixin, db.Model):
     id = db.Column(db.String, primary_key=True)
-    email = db.Column(db.String, unique=True, nullable=False)
+    email = db.Column(db.String, nullable=False)
 
 
 class HydraToken(HydraTokenMixin, db.Model):

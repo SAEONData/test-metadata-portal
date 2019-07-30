@@ -8,6 +8,9 @@ def init_app(app):
     app.register_blueprint(bp)
 
 
-@bp.local_user_creator
-def create_local_user(userinfo):
-    return User(id=userinfo['sub'], email=userinfo['email'])
+@bp.local_user_updater
+def create_or_update_local_user(user, userinfo):
+    if not user:
+        user = User(id=userinfo['sub'])
+    user.email = userinfo['email']
+    return user
