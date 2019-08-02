@@ -10,4 +10,6 @@ class Config:
 
     HYDRA_CLIENT_ID = os.getenv('HYDRA_CLIENT_ID')
     HYDRA_CLIENT_SECRET = os.getenv('HYDRA_CLIENT_SECRET')
+    HYDRA_SCOPES = os.getenv('HYDRA_SCOPES', '').split()
+    HYDRA_AUDIENCE = os.getenv('HYDRA_AUDIENCE')
     HYDRA_PUBLIC_URL = os.getenv('HYDRA_PUBLIC_URL')
