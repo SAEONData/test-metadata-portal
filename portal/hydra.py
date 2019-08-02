@@ -8,6 +8,10 @@ def init_app(app):
     app.register_blueprint(bp)
 
 
+def get_access_token():
+    return bp.get_access_token()
+
+
 @bp.local_user_updater
 def create_or_update_local_user(user, userinfo):
     if not user:

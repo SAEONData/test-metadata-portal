@@ -13,3 +13,5 @@ class Config:
     HYDRA_SCOPES = os.getenv('HYDRA_SCOPES', '').split()
     HYDRA_AUDIENCE = os.getenv('HYDRA_AUDIENCE')
     HYDRA_PUBLIC_URL = os.getenv('HYDRA_PUBLIC_URL')
+
+    ODP_API_URL = os.getenv('ODP_API_URL')

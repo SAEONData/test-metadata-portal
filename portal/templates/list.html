@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block page_heading %}
+    {% block title %}Metadata Records{% endblock %}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <input type="submit" value="Get Records">
+    </form>
+    {% for record in records %}
+        <section class="metadata-record">
+            <textarea style="font-family: monospace" readonly>
+                {{ record }}
+            </textarea>
+        </section>
+    {% endfor %}
+{% endblock %}
