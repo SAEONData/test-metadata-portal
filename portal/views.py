@@ -25,9 +25,11 @@ def list_records():
     results = []
     if request.method == 'POST':
         odpapi_url = current_app.config['ODP_API_URL']
+        ckanapi_key = current_app.config['CKAN_API_KEY']
+        access_token = ckanapi_key or get_access_token()
         read_timeout = None if get_env() == 'development' else 10
         try:
-            with ODPAPIClient(odpapi_url, get_access_token(), read_timeout=read_timeout) as odpapi_client:
+            with ODPAPIClient(odpapi_url, access_token, read_timeout=read_timeout) as odpapi_client:
                 results = odpapi_client.get('/metadata/')
                 results = [json.dumps(result, indent=4) for result in results]
         except ODPAPIError as e:
