@@ -38,7 +38,19 @@ def list_records():
     return render_template('list.html', records=results)
 
 
-@bp.route('/add')
+@bp.route('/add', methods=('GET', 'POST'))
 @login_required
 def add_record():
-    return render_template('add.html')
+    doi = None
+    if request.method == 'POST':
+        odpapi_url = current_app.config['ODP_API_URL']
+        access_token = get_access_token()
+        read_timeout = None if get_env() == 'development' else 10
+        try:
+            with ODPAPIClient(odpapi_url, access_token, read_timeout=read_timeout) as odpapi_client:
+                result = odpapi_client.get('/doi/new')
+                doi = result['doi']
+        except ODPAPIError as e:
+            flash('{code} Error: {detail}'.format(code=e.status_code, detail=e.error_detail), category='error')
+
+    return render_template('add.html', doi=doi)
