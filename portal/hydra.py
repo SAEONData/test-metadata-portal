@@ -1,8 +1,8 @@
 from .db import session as db_session
 from .models import User, HydraToken
-from hydra_client import HydraClientBlueprint
+from hydra_oauth2 import HydraOAuth2Blueprint
 
-bp = HydraClientBlueprint('hydra', __name__, db_session, User, HydraToken)
+bp = HydraOAuth2Blueprint('hydra', __name__, db_session, User, HydraToken)
 
 
 def init_app(app):

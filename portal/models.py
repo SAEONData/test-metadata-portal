@@ -2,7 +2,7 @@ from flask_login import UserMixin
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String
 
-from hydra_client import HydraTokenMixin
+from hydra_oauth2 import HydraTokenMixin
 
 Base = declarative_base()
 

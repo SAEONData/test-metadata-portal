@@ -1,7 +1,8 @@
-hydra-client-blueprint
 flask
 flask-dance[sqla]
 flask-login
 python-dotenv
 psycopg2
 click
+
+hydra-oauth2-blueprint
