@@ -1,7 +1,6 @@
 hydra-client-blueprint
 flask
 flask-dance[sqla]
-flask-sqlalchemy
 flask-login
 python-dotenv
 psycopg2

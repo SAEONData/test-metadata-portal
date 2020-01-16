@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_login import LoginManager
 
-from . import models, views, cli, config, hydra
+from . import models, views, cli, config, hydra, db
 
 app = Flask(__name__)
 app.config.from_object(config.Config)
@@ -18,4 +18,4 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    return models.User.query.get(user_id)
+    return db.session.query(models.User).get(user_id)

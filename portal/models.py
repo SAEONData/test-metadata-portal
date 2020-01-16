@@ -1,19 +1,26 @@
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, String
 
 from hydra_client import HydraTokenMixin
 
-db = SQLAlchemy()
+Base = declarative_base()
 
 
 def init_app(app):
-    db.init_app(app)
+    from .db import session
+
+    # ensure that the db session is closed and disposed after each request
+    @app.teardown_appcontext
+    def discard_session(exc):
+        session.remove()
 
 
-class User(UserMixin, db.Model):
-    id = db.Column(db.String, primary_key=True)
-    email = db.Column(db.String, nullable=False)
+class User(UserMixin, Base):
+    __tablename__ = 'user'
+    id = Column(String, primary_key=True)
+    email = Column(String, nullable=False)
 
 
-class HydraToken(HydraTokenMixin, db.Model):
+class HydraToken(HydraTokenMixin, Base):
     pass
