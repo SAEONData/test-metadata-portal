@@ -4,11 +4,11 @@ import os
 class Config:
     SECRET_KEY = os.getenv('FLASK_SECRET_KEY')
 
-    HYDRA_CLIENT_ID = os.getenv('HYDRA_CLIENT_ID')
-    HYDRA_CLIENT_SECRET = os.getenv('HYDRA_CLIENT_SECRET')
-    HYDRA_SCOPES = os.getenv('HYDRA_SCOPES', '').split()
-    HYDRA_AUDIENCE = os.getenv('HYDRA_AUDIENCE')
     HYDRA_PUBLIC_URL = os.getenv('HYDRA_PUBLIC_URL')
+    OAUTH2_CLIENT_ID = os.getenv('OAUTH2_CLIENT_ID')
+    OAUTH2_CLIENT_SECRET = os.getenv('OAUTH2_CLIENT_SECRET')
+    OAUTH2_SCOPES = os.getenv('OAUTH2_SCOPES', '').split()
+    OAUTH2_AUDIENCE = os.getenv('OAUTH2_AUDIENCE')
 
     ODP_API_URL = os.getenv('ODP_API_URL')
     CKAN_API_KEY = os.getenv('CKAN_API_KEY')
