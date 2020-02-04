@@ -6,6 +6,7 @@
 
 {% block content %}
     <form method="post">
+        <label>Institution Key:</label><input name="institution_key" type="text">
         <input type="submit" value="Get Records">
     </form>
     {% for record in records %}
