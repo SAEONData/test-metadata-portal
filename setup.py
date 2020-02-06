@@ -7,15 +7,16 @@ setup(
     python_requires='~=3.6',
     install_requires=[
         'flask',
-        'flask-dance[sqla]',
         'flask-login',
+        'flask-wtf',
         'python-dotenv',
         'sqlalchemy',
         'psycopg2',
         'click',
+        'requests',
+        'wtforms',
     ],
     dependency_links=[
         'git+https://github.com/SAEONData/Hydra-OAuth2-Blueprint.git#egg=Hydra_OAuth2_Blueprint',
-        'git+https://github.com/SAEONData/ODP-API-Client.git#egg=ODP_API_Client',
     ],
 )

@@ -11,4 +11,5 @@ class Config:
     OAUTH2_AUDIENCE = os.getenv('OAUTH2_AUDIENCE')
 
     ODP_API_URL = os.getenv('ODP_API_URL')
+    ACCOUNTS_API_URL = os.getenv('ACCOUNTS_API_URL')
     CKAN_API_KEY = os.getenv('CKAN_API_KEY')

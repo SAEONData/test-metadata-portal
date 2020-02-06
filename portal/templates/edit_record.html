@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import field_errors, form_errors %}
+
+{% block page_heading %}
+    {% block title %}{{ 'Add' if new else 'Edit' }} Metadata Record - {{ institution_key }}{% endblock %}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {{ form_errors(form) }}
+        {{ form.csrf_token }}
+        {{ form.collection_key.label }} {{ field_errors(form.collection_key) }}
+        {{ form.schema_key.label }} {{ field_errors(form.schema_key) }}
+        {{ form.metadata.label }} {{ field_errors(form.metadata) }}
+        {{ form.auto_assign_doi.label }} {{ field_errors(form.auto_assign_doi) }}
+        {{ form.doi.label }} {{ field_errors(form.doi) }}
+        <input type="submit" value="{{ 'Add' if new else 'Update' }} Record">
+    </form>
+    {% if record %}
+        <h2>Result:</h2>
+        <textarea style="font-family: monospace; width: 75%; height: 50vh" readonly>
+            {{ record }}
+        </textarea>
+    {% endif %}
+{% endblock %}

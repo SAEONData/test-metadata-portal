@@ -1,19 +1,17 @@
 {% extends 'base.html' %}
 
 {% block page_heading %}
-    {% block title %}Metadata Records{% endblock %}
+    {% block title %}Metadata Records - {{ institution_key }}{% endblock %}
 {% endblock %}
 
 {% block content %}
-    <form method="post">
-        <label>Institution Key:</label><input name="institution_key" type="text">
-        <input type="submit" value="Get Records">
-    </form>
     {% for record in records %}
         <section class="metadata-record">
             <textarea style="font-family: monospace" readonly>
                 {{ record }}
             </textarea>
+            <a href="{{ url_for('portal.view_record', institution_key=institution_key, record_id=record.id) }}">View...</a>
+            <a href="{{ url_for('portal.edit_record', institution_key=institution_key, record_id=record.id) }}">Edit...</a>
         </section>
     {% endfor %}
 {% endblock %}

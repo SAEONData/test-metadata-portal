@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block page_heading %}
+    {% block title %}View Metadata Record - {{ institution_key }}{% endblock %}
+{% endblock %}
+
+{% block content %}
+    {% if record %}
+        <textarea style="font-family: monospace; width: 75%; height: 75vh" readonly>
+            {{ record }}
+        </textarea>
+    {% endif %}
+{% endblock %}
