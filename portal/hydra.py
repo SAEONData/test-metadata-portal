@@ -2,7 +2,7 @@ from .db import session as db_session
 from .models import User, HydraToken
 from hydra_oauth2 import HydraOAuth2Blueprint
 
-bp = HydraOAuth2Blueprint('hydra', __name__, db_session, User, HydraToken)
+bp = HydraOAuth2Blueprint('hydra', __name__, db_session, User, HydraToken, 'portal.index')
 
 
 def init_app(app):
